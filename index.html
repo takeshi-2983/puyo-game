@@ -1,3 +1,317 @@
+
+スマホ上で動くWebゲームを作りたい。
+
+13:21
+どんなゲームを作りたいですか？いくつか教えてください！
+
+Q: ゲームのジャンルは？
+A: テトリスやぷよぷよのようなゲーム
+
+Q: ゲームの雰囲気は？
+A: ポップ・カラフル
+
+Q: こだわりたいポイントは？（該当するものをすべて選択）
+A: ビジュアル・演出
+
+13:22
+いいですね！落ち物パズル系で、ポップでカラフルなビジュアル重視のゲームですね。もう少し詳しく教えてください！
+
+Q: ゲームルールのベースは？
+A: ぷよぷよ寄り（同色連鎖・消し）
+
+Q: UIの言語は？
+A: 日本語
+
+Q: 優先度は？
+A: とにかく早く動くものを！
+
+13:23
+了解です！では早速作ります🎮
+
+
+フロントエンドデザインスキルを確認
+フロントエンドデザインスキルを確認
+ポップでカラフルなぷよぷよ風ゲームを作ります！
+
+
+ファイルを作成しました, ファイルを読み取りました
+ファイルを作成しました, ファイルを読み取りました
+できました！🎮 HTMLファイルをダウンロードしてスマホのブラウザで開くか、PCで直接プレイできます。
+
+ゲーム内容：
+
+同じ色のぷよを4つ以上つなげて消す
+連鎖でスコアボーナス（2連鎖なら4倍、3連鎖なら9倍）
+レベルが上がるほど落下スピードアップ＆色数増加
+ゴースト表示でどこに落ちるか分かる
+操作方法：
+
+スマホ	キーボード
+◀▶ボタン	← →
+↺↻ボタン	Z / X
+▼▼ボタン	↓
+フィールドタップ	↑（右回転）
+スワイプ	直感操作も可
+何か調整したい点（色・難易度・ルールなど）があればお気軽にどうぞ！
+
+Puyo game
+コード · HTML 
+ストップできるようにして
+
+13:29
+
+4個のファイルを表示しました
+4個のファイルを表示しました
+ポーズ機能を追加します！
+
+
+7個のファイルを編集しました, ファイルを読み取りました
+7個のファイルを編集しました, ファイルを読み取りました
+ポーズ機能を追加しました！
+
+追加した操作：
+
+タイトル下の 「⏸ ポーズ」ボタン をタップ → 一時停止
+ポーズ中はフィールドが暗くなり「PAUSE」表示
+ボタンが 「▶ 再開」 に変わり、もう一度タップで再開
+キーボードは Escape または P キーでもトグル可能
+Puyo game
+コード · HTML 
+これをスマホで簡単に起動できるようにするには？
+
+13:31
+いくつか方法があります。手軽さ順に紹介しますね。
+
+① GitHub Pages（無料・おすすめ） HTMLファイルをGitHubにアップロードするだけで、URLが発行されてスマホのブラウザからアクセスできます。そのURLをホーム画面に追加すれば、アプリっぽく使えます。GitHubアカウントがあればすぐできます。
+
+② Netlify Drop（最速・1分） netlify.com/drop にHTMLファイルをドラッグ＆ドロップするだけでURLが発行されます。アカウント不要（ただし24時間後に削除）、アカウント登録すれば永続利用可能です。
+
+③ ホーム画面に追加（ネット不要にしたい場合） iPhoneの場合、SafariでHTMLファイルを開いて「共有→ホーム画面に追加」でアプリアイコンとして登録できます。ただしローカルファイルなのでiCloudやAirDropでスマホに転送する必要があります。
+
+どれが一番合ってますか？
+
+Q: どの方法が合ってますか？
+A: GitHub Pages
+
+13:32
+GitHub Pagesの手順を説明します！
+
+① GitHubアカウントを作る github.com にアクセスして「Sign up」からアカウント登録（すでにあればスキップ）。
+
+② 新しいリポジトリを作る ログイン後、右上の「+」→「New repository」をクリック。
+
+Repository name: puyo-game（なんでもOK）
+Public を選択
+「Create repository」をクリック
+③ HTMLファイルをアップロードする 作成したリポジトリのページで「uploading an existing file」リンクをクリック → puyo_game.html をドラッグ＆ドロップ → ファイル名を index.html に変更 → 「Commit changes」をクリック。
+
+④ GitHub Pagesを有効にする リポジトリの「Settings」→ 左メニュー「Pages」→ Branch を main に設定 → 「Save」。
+
+⑤ URLにアクセス 数分後に https://あなたのユーザー名.github.io/puyo-game/ というURLが発行されます。これをスマホのSafari/Chromeで開けばプレイできます！
+
+ホーム画面アイコン化（おまけ）
+
+iPhoneの場合、Safariでゲームを開いて、共有ボタン（□↑）→「ホーム画面に追加」でアプリアイコンとして登録できます。次回からはアイコンタップで起動できます。
+
+詰まったステップがあれば気軽に聞いてください！
+
+URLの確かめ方は？
+
+13:37
+GitHub PagesのURLは2箇所で確認できます。
+
+① Settingsで確認する
+
+リポジトリページの「Settings」→「Pages」を開くと、有効になっていれば上部に
+
+Your site is live at https://ユーザー名.github.io/puyo-game/
+
+と表示されます。
+
+② リポジトリのトップページで確認する
+
+リポジトリのトップ（Codeタブ）の右側に「Deployments」という欄が表示されるので、そこをクリックすると最新のURLが確認できます。
+
+⚠️ 注意点
+
+有効化してから反映まで 1〜3分 かかることがあります
+最初は「404 Not Found」になることがありますが、少し待ってからリロードすれば表示されます
+ファイル名が index.html になっていないとURLにファイル名を付けないとアクセスできないので、アップロード時に名前を確認してみてください
+URLが確認できない
+
+13:40
+この画面はまだGitHub Pagesが有効になっていない状態です。Branchの設定が「None」のままなので、これを変更する必要があります。
+
+手順：
+
+「None」と書かれたドロップダウンをクリック
+main を選択
+その横に / (root) という選択肢が出るのでそのままでOK
+「Save」 をクリック
+しばらく待つと同じページの上部に
+
+Your site is live at https://takeshi-2983.github.io/puyo-game/
+
+と表示されます。これがゲームのURLです！
+
+このゲームをもっと面白くするためのアイデアは？
+
+13:45
+いくつかアイデアを挙げます！実装難易度別に整理しました。
+
+🟢 簡単に追加できるもの
+
+おじゃまぷよ：一定スコアで邪魔なぷよが上から降ってくる
+タイムアタックモード：60秒以内にどれだけ消せるか
+BGM・効果音：Web Audio APIで音を鳴らす（消したとき、連鎖時など）
+コンボアニメーション強化：連鎖数に応じてエフェクトが派手になる
+🟡 中くらいの難易度
+
+ステージモード：「30個消したらクリア」など目標のあるステージを用意
+スキンチェンジ：ぷよのデザインを丸・星・ハートなど切り替えられる
+ランキング：スコアをローカルに保存してトップ5表示
+🔴 やりごたえあり
+
+対戦モード：同じ画面を2分割して2人対戦（スマホ横向き）
+AIオート：CPUが自動プレイするデモモード
+ぷよのキャラクター化：色ごとに表情付きのキャラにする
+どれか気になるものはありますか？選んでもらえれば実装します！
+
+ぶよのキャラクター化
+
+13:46
+どんなキャラにしましょうか？
+
+Q: キャラクターの雰囲気は？
+A: ゆるキャラ系（のんびり顔）
+
+Q: 色とキャラの関係は？
+A: 色ごとに違う表情
+
+Q: こだわりたい演出は？（複数選択可）（該当するものをすべて選択）
+A: 消えるときに表情が変わる
+
+13:47
+いいですね！では実装します🎨
+
+
+2個のファイルを表示しました
+2個のファイルを表示しました
+内容を把握しました。drawCell 関数をキャラクター描画に置き換えます！
+
+
+DrawCell関数をキャラクター描画に置き換え
+DrawCell関数をキャラクター描画に置き換え
+次にdrawAllとdrawNextでcolorIdxとfaceを渡すよう更新します。
+
+
+2個のファイルを編集しました, ファイルを読み取りました
+2個のファイルを編集しました, ファイルを読み取りました
+キャラクター化しました！🎨
+
+各色のキャラクター：
+
+色	表情	特徴
+🔴 赤	元気いっぱい	丸目・ニッコリ・ほっぺ赤
+🔵 青	おっとり	半目・ゆるスマイル・ほっぺ青
+🟢 緑	ニコニコ	三日月目・大きな笑顔
+🟡 黄	びっくり	大きな丸目・小さなO口
+🟣 紫	眠そう	糸目・ほっぺ紫
+消えるときは全員 ×目＋汗＋困り口 に変わります！
+
+GitHubにも最新ファイルをアップロードし直すと反映されます。
+
+Puyo game
+コード · HTML 
+顔の表情をもっと漫画風にして
+
+13:50
+漫画風に全面リデザインします！✏️
+
+
+2個のファイルを表示しました
+2個のファイルを表示しました
+全部把握しました。顔描画を漫画風に全面書き直します！
+
+
+ファイルを編集しました, ファイルを読み取りました
+ファイルを編集しました, ファイルを読み取りました
+漫画風にリニューアルしました！✏️
+
+各キャラクターの表情：
+
+色	通常	特徴
+🔴 赤	ドヤ顔	白目＋黒目＋キラキラ、太い眉、歯見せ笑顔、ほっぺ赤
+🔵 青	たれ目おっとり	たれ下がった目、青い瞳、ゆる口、ほっぺ青
+🟢 緑	満面の笑み	への字目＋まつ毛、大口笑顔
+🟡 黄	びっくり！	大きな白目、驚き眉、叫び口（歯あり）
+🟣 紫	うとうと半眼	半開き目、口元はハートマーク💜
+消えるときは全員 赤い×目＋ガタガタ震え口＋汗2つ のパニック顔になります！
+
+Puyo game
+コード · HTML 
+ステージを作成したい。
+
+13:53
+どんなステージにしましょうか？
+
+Q: クリア条件は？
+A: 個数目標（N個消したらクリア）
+
+Q: ステージ数は？
+A: 5〜10ステージ
+
+Q: こだわりたいポイントは？（複数可）（該当するものをすべて選択）
+A: 難易度が徐々に上がる, ステージごとに背景が変わる
+
+13:56
+わかりました！実装します🎮
+
+
+4個のファイルを表示しました
+4個のファイルを表示しました
+全体把握できました。ステージシステムを大規模に追加します！
+
+設計：
+
+8ステージ（草原→砂漠→海→空→夕焼け→雪山→宇宙→火山）
+ステージごとにクリア目標個数・落下速度・色数が変化
+ステージクリア演出オーバーレイ
+進捗バー表示
+
+5個のファイルを編集しました
+5個のファイルを編集しました
+次にJavaScriptのステージシステムを追加します。
+
+
+8個のファイルを編集しました, ファイルを読み取りました
+8個のファイルを編集しました, ファイルを読み取りました
+ステージシステムを追加しました！🗺️
+
+全8ステージの構成：
+
+#	ステージ	目標	色数	難易度
+1	🌿 草原	20個	2色	★☆☆☆☆
+2	🏜️ 砂漠	30個	3色	★★☆☆☆
+3	🌊 海	40個	3色	★★☆☆☆
+4	☁️ 空	50個	3色	★★★☆☆
+5	🌅 夕焼け	60個	4色	★★★☆☆
+6	⛄ 雪山	75個	4色	★★★★☆
+7	🚀 宇宙	90個	5色	★★★★☆
+8	🌋 火山	110個	5色	★★★★★
+ステージごとに背景色・進捗バーの色が変わり、クリアすると演出画面が出て次のステージへ進めます。ゲームオーバーになっても同じステージからやり直せます！
+
+Puyo game
+コード · HTML 
+
+
+
+
+
+Claude は AI のため、誤りを含む可能性があります。回答内容は必ずご確認ください。
+Puyo game · HTML
+コピー
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -6,7 +320,7 @@
 <title>ぷよぷよ風ゲーム</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
-
+ 
   :root {
     --red: #FF4757;
     --blue: #2ED573;
@@ -20,11 +334,11 @@
     --text: #ffffff;
     --shadow-glow: rgba(255,255,255,0.08);
   }
-
+ 
   * { box-sizing: border-box; margin: 0; padding: 0; touch-action: manipulation; }
-
+ 
   body {
-    background: var(--bg);
+    background: var(--stage-bg, #0D0D2B);
     font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: column;
@@ -32,10 +346,19 @@
     justify-content: flex-start;
     min-height: 100dvh;
     overflow: hidden;
-    background-image: radial-gradient(ellipse at 20% 20%, #1a0a3e 0%, transparent 60%),
-                      radial-gradient(ellipse at 80% 80%, #0a1a3e 0%, transparent 60%);
+    transition: background 0.8s ease;
   }
-
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--stage-grad);
+    z-index: 0;
+    transition: background 0.8s ease;
+    pointer-events: none;
+  }
+  #header, #main, #controls { position: relative; z-index: 1; }
+ 
   #header {
     width: 100%;
     max-width: 420px;
@@ -44,7 +367,7 @@
     align-items: center;
     padding: 10px 16px 6px;
   }
-
+ 
   .score-box {
     background: var(--panel);
     border-radius: 14px;
@@ -52,7 +375,7 @@
     text-align: center;
     border: 1px solid var(--cell-border);
   }
-
+ 
   .score-label {
     font-size: 10px;
     color: #8888cc;
@@ -60,7 +383,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-
+ 
   .score-value {
     font-size: 22px;
     font-weight: 900;
@@ -68,7 +391,7 @@
     text-shadow: 0 0 12px #FFD70088;
     line-height: 1;
   }
-
+ 
   #title {
     font-size: 20px;
     font-weight: 900;
@@ -77,7 +400,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
+ 
   #main {
     display: flex;
     gap: 10px;
@@ -86,12 +409,12 @@
     width: 100%;
     max-width: 420px;
   }
-
+ 
   #board-wrap {
     flex: 1;
     position: relative;
   }
-
+ 
   canvas#gameCanvas {
     display: block;
     width: 100%;
@@ -99,7 +422,7 @@
     border: 2px solid var(--cell-border);
     box-shadow: 0 0 30px rgba(100,100,255,0.15);
   }
-
+ 
   #side-panel {
     width: 72px;
     display: flex;
@@ -107,7 +430,7 @@
     gap: 12px;
     padding-top: 4px;
   }
-
+ 
   .side-box {
     background: var(--panel);
     border-radius: 12px;
@@ -115,7 +438,7 @@
     padding: 8px;
     text-align: center;
   }
-
+ 
   .side-label {
     font-size: 9px;
     color: #8888cc;
@@ -124,19 +447,19 @@
     margin-bottom: 6px;
     text-transform: uppercase;
   }
-
+ 
   canvas#nextCanvas {
     display: block;
     margin: 0 auto;
   }
-
+ 
   #level-val {
     font-size: 26px;
     font-weight: 900;
     color: #2ED573;
     text-shadow: 0 0 12px #2ED57388;
   }
-
+ 
   #chain-display {
     position: absolute;
     top: 50%;
@@ -151,7 +474,7 @@
     z-index: 10;
     white-space: nowrap;
   }
-
+ 
   #controls {
     width: 100%;
     max-width: 420px;
@@ -160,7 +483,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 8px;
   }
-
+ 
   .btn {
     background: var(--panel);
     border: 2px solid var(--cell-border);
@@ -175,25 +498,25 @@
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
-
+ 
   .btn:active {
     background: #2a2a5e;
     transform: scale(0.94);
     border-color: #5555aa;
   }
-
+ 
   .btn-rotate {
     font-size: 18px;
     background: linear-gradient(135deg, #1a1a4e, #2a1a5e);
     border-color: #6644aa;
   }
-
+ 
   .btn-drop {
     font-size: 18px;
     background: linear-gradient(135deg, #1a3a1a, #1a4a2a);
     border-color: #44aa66;
   }
-
+ 
   #overlay {
     position: fixed;
     inset: 0;
@@ -205,9 +528,9 @@
     z-index: 100;
     backdrop-filter: blur(6px);
   }
-
+ 
   #overlay.hidden { display: none; }
-
+ 
   .overlay-title {
     font-size: 40px;
     font-weight: 900;
@@ -217,21 +540,21 @@
     background-clip: text;
     margin-bottom: 10px;
   }
-
+ 
   .overlay-score {
     font-size: 20px;
     color: #ccccff;
     margin-bottom: 6px;
     font-weight: 800;
   }
-
+ 
   .overlay-hi {
     font-size: 15px;
     color: #FFD700;
     margin-bottom: 28px;
     font-weight: 700;
   }
-
+ 
   .start-btn {
     background: linear-gradient(135deg, #FF4757, #C44DFF);
     border: none;
@@ -245,9 +568,9 @@
     box-shadow: 0 4px 24px rgba(196,77,255,0.5);
     transition: all 0.15s;
   }
-
+ 
   .start-btn:active { transform: scale(0.96); }
-
+ 
   .rules {
     margin-top: 20px;
     color: #8888cc;
@@ -256,7 +579,7 @@
     line-height: 1.8;
     font-weight: 700;
   }
-
+ 
   /* パーティクル */
   .particle {
     position: absolute;
@@ -264,7 +587,7 @@
     pointer-events: none;
     z-index: 5;
   }
-
+ 
   #pauseBtn {
     background: var(--panel);
     border: 2px solid var(--cell-border);
@@ -279,10 +602,10 @@
     -webkit-tap-highlight-color: transparent;
     line-height: 1;
   }
-
+ 
   #pauseBtn:active { transform: scale(0.93); background: #2a2a5e; }
   #pauseBtn.paused { color: #2ED573; border-color: #2ED573; text-shadow: 0 0 10px #2ED57388; }
-
+ 
   #pause-overlay {
     position: absolute;
     inset: 0;
@@ -298,12 +621,12 @@
     opacity: 0;
     transition: opacity 0.15s;
   }
-
+ 
   #pause-overlay.visible {
     opacity: 1;
     pointer-events: auto;
   }
-
+ 
   #pause-overlay .pause-text {
     font-size: 36px;
     font-weight: 900;
@@ -311,17 +634,129 @@
     letter-spacing: 4px;
     text-shadow: 0 0 20px rgba(100,100,255,0.8);
   }
-
+ 
   #pause-overlay .pause-sub {
     font-size: 13px;
     color: #8888cc;
     margin-top: 8px;
     font-weight: 700;
   }
+ 
+  /* ===== ステージ進捗バー ===== */
+  #stage-bar-wrap {
+    width: 100%;
+    max-width: 420px;
+    padding: 2px 14px 4px;
+    position: relative;
+    z-index: 1;
+  }
+  #stage-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+  #stage-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #aaaaee;
+    letter-spacing: 1px;
+  }
+  #stage-goal-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #aaaaee;
+  }
+  #stage-bar-bg {
+    background: #1a1a40;
+    border-radius: 8px;
+    height: 10px;
+    border: 1px solid #2a2a60;
+    overflow: hidden;
+  }
+  #stage-bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #2ED573, #FFD700);
+    transition: width 0.3s ease, background 0.5s;
+    width: 0%;
+  }
+ 
+  /* ===== ステージクリアオーバーレイ ===== */
+  #stage-clear-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  #stage-clear-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .stage-clear-title {
+    font-size: 48px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FFD700, #FF4757, #C44DFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    margin-bottom: 6px;
+  }
+  .stage-next-info {
+    font-size: 18px;
+    color: #ccccff;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .stage-next-theme {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .stage-next-btn {
+    background: linear-gradient(135deg, #2ED573, #1E90FF);
+    border: none;
+    border-radius: 18px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 14px 44px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(46,213,115,0.4);
+    transition: all 0.15s;
+  }
+  .stage-next-btn:active { transform: scale(0.96); }
+ 
+  @keyframes popIn {
+    from { transform: scale(0.4); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+ 
+  /* 全クリア */
+  .all-clear-title {
+    font-size: 40px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FFD700, #FF4757, #C44DFF, #2ED573);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    text-align: center;
+    margin-bottom: 8px;
+  }
 </style>
 </head>
 <body>
-
+ 
 <div id="header">
   <div class="score-box">
     <div class="score-label">スコア</div>
@@ -336,7 +771,17 @@
     <div class="score-value" id="hiVal">0</div>
   </div>
 </div>
-
+ 
+<div id="stage-bar-wrap">
+  <div id="stage-bar-header">
+    <span id="stage-label">STAGE 1 🌿 草原</span>
+    <span id="stage-goal-label">0 / 20個</span>
+  </div>
+  <div id="stage-bar-bg">
+    <div id="stage-bar-fill"></div>
+  </div>
+</div>
+ 
 <div id="main">
   <div id="board-wrap">
     <canvas id="gameCanvas"></canvas>
@@ -361,7 +806,7 @@
     </div>
   </div>
 </div>
-
+ 
 <div id="controls">
   <button class="btn" id="btnLeft">◀</button>
   <button class="btn btn-rotate" id="btnRotL">↺</button>
@@ -369,32 +814,74 @@
   <button class="btn btn-rotate" id="btnRotR">↻</button>
   <button class="btn" id="btnRight">▶</button>
 </div>
-
+ 
+<div id="stage-clear-overlay">
+  <div id="stage-clear-inner"></div>
+</div>
+ 
 <div id="overlay">
   <div class="overlay-title" id="overlayTitle">ぷよポップ！</div>
   <div class="overlay-score" id="overlayScore"></div>
   <div class="overlay-hi" id="overlayHi"></div>
-  <button class="start-btn" id="startBtn">🎮 スタート！</button>
-  <div class="rules">
-    同じ色のぷよを4つ以上つなげて消そう！<br>
-    連鎖ボーナスで高得点を狙え！
+  <button class="start-btn" id="startBtn">🎮 STAGE 1 から！</button>
+  <div class="rules" style="margin-top:14px;">
+    同じ色を4つ以上つなげて消そう！<br>
+    連鎖でボーナス ✨ 全8ステージ制覇を目指せ！<br><br>
+    🌿草原 → 🏜️砂漠 → 🌊海 → ☁️空<br>
+    🌅夕焼け → ⛄雪山 → 🚀宇宙 → 🌋火山
   </div>
 </div>
-
+ 
 <script>
 const COLS = 6, ROWS = 13;
 const COLORS = ['#FF4757','#1E90FF','#2ED573','#FFD700','#C44DFF'];
 const COLOR_GLOW = ['#FF4757','#1E90FF','#2ED573','#FFD700','#C44DFF'];
 const COLOR_NAMES = ['赤','青','緑','黄','紫'];
-
+ 
+// ===== ステージ定義 =====
+const STAGES = [
+  { id:1, name:'草原',   emoji:'🌿', goal:20,  colors:2, fallSpeed:52, bg:'#0a1a0a', grad:'radial-gradient(ellipse at 30% 20%, #1a3a1a 0%, transparent 55%), radial-gradient(ellipse at 70% 80%, #0a2a0a 0%, transparent 55%)', barColor:'linear-gradient(90deg,#2ED573,#88FF44)' },
+  { id:2, name:'砂漠',   emoji:'🏜️', goal:30,  colors:3, fallSpeed:48, bg:'#1a1000', grad:'radial-gradient(ellipse at 40% 30%, #3a2800 0%, transparent 55%), radial-gradient(ellipse at 60% 70%, #2a1a00 0%, transparent 55%)', barColor:'linear-gradient(90deg,#FFD700,#FF8C00)' },
+  { id:3, name:'海',     emoji:'🌊', goal:40,  colors:3, fallSpeed:44, bg:'#001a2a', grad:'radial-gradient(ellipse at 20% 40%, #002a4a 0%, transparent 55%), radial-gradient(ellipse at 80% 60%, #001a3a 0%, transparent 55%)', barColor:'linear-gradient(90deg,#1E90FF,#00FFCC)' },
+  { id:4, name:'空',     emoji:'☁️', goal:50,  colors:3, fallSpeed:40, bg:'#0a0a2a', grad:'radial-gradient(ellipse at 50% 20%, #1a1a4a 0%, transparent 60%), radial-gradient(ellipse at 30% 70%, #0a0a3a 0%, transparent 55%)', barColor:'linear-gradient(90deg,#88AAFF,#CCDDFF)' },
+  { id:5, name:'夕焼け', emoji:'🌅', goal:60,  colors:4, fallSpeed:36, bg:'#1a0808', grad:'radial-gradient(ellipse at 50% 10%, #3a1500 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, #2a0a0a 0%, transparent 55%)', barColor:'linear-gradient(90deg,#FF4757,#FF8C00)' },
+  { id:6, name:'雪山',   emoji:'⛄', goal:75,  colors:4, fallSpeed:32, bg:'#0a0a1a', grad:'radial-gradient(ellipse at 60% 20%, #1a1a3a 0%, transparent 55%), radial-gradient(ellipse at 30% 70%, #0a1a2a 0%, transparent 55%)', barColor:'linear-gradient(90deg,#AADDFF,#FFFFFF)' },
+  { id:7, name:'宇宙',   emoji:'🚀', goal:90,  colors:5, fallSpeed:26, bg:'#000010', grad:'radial-gradient(ellipse at 20% 20%, #100030 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, #000020 0%, transparent 50%)', barColor:'linear-gradient(90deg,#C44DFF,#FF4757)' },
+  { id:8, name:'火山',   emoji:'🌋', goal:110, colors:5, fallSpeed:20, bg:'#1a0000', grad:'radial-gradient(ellipse at 50% 80%, #3a0800 0%, transparent 55%), radial-gradient(ellipse at 50% 20%, #1a0000 0%, transparent 55%)', barColor:'linear-gradient(90deg,#FF4757,#FF0000)' },
+];
+ 
+let currentStageIdx = 0;
+ 
+function getStage() { return STAGES[currentStageIdx]; }
+ 
+function applyStageTheme(stage) {
+  document.body.style.setProperty('--stage-bg', stage.bg);
+  document.body.style.setProperty('--stage-grad', stage.grad);
+  document.getElementById('stage-label').textContent = `STAGE ${stage.id} ${stage.emoji} ${stage.name}`;
+  document.getElementById('stage-bar-fill').style.background = stage.barColor;
+  // キャンバス枠色も変化
+  const canvas = document.getElementById('gameCanvas');
+  canvas.style.borderColor = stage.barColor.includes('2ED573') ? '#2ED573' :
+                              stage.barColor.includes('FFD700') ? '#FFD700' :
+                              stage.barColor.includes('1E90FF') ? '#1E90FF' :
+                              stage.barColor.includes('FF4757') ? '#FF4757' : '#C44DFF';
+  updateStageBar(0, stage.goal);
+}
+ 
+function updateStageBar(cleared, goal) {
+  const pct = Math.min(100, Math.round(cleared / goal * 100));
+  document.getElementById('stage-bar-fill').style.width = pct + '%';
+  document.getElementById('stage-goal-label').textContent = `${cleared} / ${goal}個`;
+}
+ 
 let canvas = document.getElementById('gameCanvas');
 let ctx = canvas.getContext('2d');
 let nextCanvas = document.getElementById('nextCanvas');
 let nctx = nextCanvas.getContext('2d');
-
+ 
 // セルサイズをキャンバスに合わせて計算
 let CELL = 0;
-
+ 
 function resize() {
   const wrap = document.getElementById('board-wrap');
   const w = wrap.clientWidth;
@@ -403,21 +890,23 @@ function resize() {
   canvas.height = ROWS * CELL;
   if (game) drawAll();
 }
-
+ 
 // ゲーム状態
 let game = null;
-
+ 
 class PuyoGame {
-  constructor() {
+  constructor(stage) {
+    this.stage = stage;
     this.board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
     this.score = 0;
     this.cleared = 0;
-    this.level = 1;
+    this.level = stage.id;
     this.fallTimer = 0;
-    this.fallSpeed = 48; // フレーム数
+    this.fallSpeed = stage.fallSpeed;
+    this.numColors = stage.colors;
     this.current = null;
     this.next = null;
-    this.state = 'falling'; // falling | clearing | gameover
+    this.state = 'falling'; // falling | clearing | gameover | stageclear
     this.chainCount = 0;
     this.animFrames = 0;
     this.clearCells = [];
@@ -426,17 +915,15 @@ class PuyoGame {
     this.genNext();
     this.spawnCurrent();
   }
-
+ 
   randColor() {
-    // レベルに応じて色数を増やす
-    const numColors = Math.min(2 + this.level, 5);
-    return Math.floor(Math.random() * numColors) + 1;
+    return Math.floor(Math.random() * this.numColors) + 1;
   }
-
+ 
   genNext() {
     this.next = [this.randColor(), this.randColor()];
   }
-
+ 
   spawnCurrent() {
     this.current = {
       colors: this.next,
@@ -451,7 +938,7 @@ class PuyoGame {
       this.state = 'gameover';
     }
   }
-
+ 
   getPairPos() {
     const {col, row, rot} = this.current;
     let r1=row, c1=col, r2, c2;
@@ -461,7 +948,7 @@ class PuyoGame {
     else              { r2=row; c2=col-1; }
     return [r1,c1,r2,c2];
   }
-
+ 
   canPlace(col, row, rot) {
     let c2, r2;
     if (rot===0)      { r2=row+1; c2=col; }
@@ -471,14 +958,14 @@ class PuyoGame {
     return this.inBounds(col,row) && this.inBounds(c2,r2) &&
            !this.board[row][col] && !this.board[r2][c2];
   }
-
+ 
   inBounds(c, r) {
     return c>=0 && c<COLS && r>=0 && r<ROWS;
   }
-
+ 
   moveLeft()  { if (this.state!=='falling') return; const {col,row,rot}=this.current; if (this.canPlace(col-1,row,rot)) this.current.col--; }
   moveRight() { if (this.state!=='falling') return; const {col,row,rot}=this.current; if (this.canPlace(col+1,row,rot)) this.current.col++; }
-
+ 
   rotLeft() {
     if (this.state!=='falling') return;
     const {col,row,rot}=this.current;
@@ -489,7 +976,7 @@ class PuyoGame {
       if (this.canPlace(col+dc,row,nr)) { this.current.col+=dc; this.current.rot=nr; return; }
     }
   }
-
+ 
   rotRight() {
     if (this.state!=='falling') return;
     const {col,row,rot}=this.current;
@@ -499,13 +986,13 @@ class PuyoGame {
       if (this.canPlace(col+dc,row,nr)) { this.current.col+=dc; this.current.rot=nr; return; }
     }
   }
-
+ 
   softDrop() {
     if (this.state!=='falling') return;
     this.fall();
     this.score += 1;
   }
-
+ 
   fall() {
     const {col,row,rot}=this.current;
     if (this.canPlace(col,row+1,rot)) {
@@ -514,7 +1001,7 @@ class PuyoGame {
       this.lock();
     }
   }
-
+ 
   lock() {
     const [r1,c1,r2,c2] = this.getPairPos();
     if (this.inBounds(c1,r1)) this.board[r1][c1] = this.current.colors[0];
@@ -523,7 +1010,7 @@ class PuyoGame {
     this.chainCount = 0;
     this.checkClear();
   }
-
+ 
   applyGravity() {
     for (let c=0;c<COLS;c++) {
       let bottom = ROWS-1;
@@ -536,11 +1023,11 @@ class PuyoGame {
       }
     }
   }
-
+ 
   checkClear() {
     const visited = Array.from({length:ROWS},()=>Array(COLS).fill(false));
     const toDelete = [];
-
+ 
     for (let r=0;r<ROWS;r++) {
       for (let c=0;c<COLS;c++) {
         const color = this.board[r][c];
@@ -563,7 +1050,7 @@ class PuyoGame {
         if (group.length>=4) toDelete.push(...group);
       }
     }
-
+ 
     if (toDelete.length) {
       this.chainCount++;
       this.clearCells = toDelete;
@@ -575,17 +1062,18 @@ class PuyoGame {
       this.cleared += toDelete.length;
       showChain(this.chainCount);
       updateUI(this.score, this.cleared, this.level);
+      updateStageBar(this.cleared, this.stage.goal);
     } else {
+      // ステージクリア判定
+      if (this.cleared >= this.stage.goal) {
+        this.state = 'stageclear';
+        return;
+      }
       this.state = 'falling';
       this.spawnCurrent();
-      if (this.state !== 'gameover') {
-        // レベルアップ
-        this.level = 1 + Math.floor(this.cleared / 20);
-        this.fallSpeed = Math.max(6, 48 - this.level*4);
-      }
     }
   }
-
+ 
   stepClear() {
     this.animFrames--;
     if (this.animFrames <= 0) {
@@ -595,7 +1083,7 @@ class PuyoGame {
       this.checkClear();
     }
   }
-
+ 
   tick() {
     if (this.state==='falling') {
       this.fallTimer++;
@@ -608,7 +1096,7 @@ class PuyoGame {
     }
   }
 }
-
+ 
 // UI更新
 function updateUI(score, cleared, level) {
   document.getElementById('scoreVal').textContent = score.toLocaleString();
@@ -618,7 +1106,7 @@ function updateUI(score, cleared, level) {
   localStorage.setItem('puyoHi', hi);
   document.getElementById('hiVal').textContent = hi.toLocaleString();
 }
-
+ 
 let chainTimeout = null;
 function showChain(n) {
   const el = document.getElementById('chain-display');
@@ -629,42 +1117,494 @@ function showChain(n) {
     el.style.transform='translate(-50%,-50%) scale(0)';
   }, 600);
 }
-
+ 
 // 描画
-function drawCell(context, c, r, color, size, glow, alpha=1, scale=1) {
+// colorIdx: 0=赤, 1=青, 2=緑, 3=黄, 4=紫
+// face: 'normal' | 'dying'
+function drawCell(context, c, r, color, size, glow, alpha=1, scale=1, colorIdx=0, face='normal') {
   const x = c*size + size/2;
   const y = r*size + size/2;
   const radius = size*0.42*scale;
-
+ 
   context.save();
   context.globalAlpha = alpha;
-
-  // グロー
+ 
   if (glow) {
     context.shadowColor = color;
     context.shadowBlur = 14;
   }
-
-  // 本体
+ 
+  // 本体グラデーション
   const grad = context.createRadialGradient(x-radius*0.3, y-radius*0.3, radius*0.1, x, y, radius);
-  grad.addColorStop(0, lighten(color, 60));
-  grad.addColorStop(0.5, color);
-  grad.addColorStop(1, darken(color, 40));
-
+  grad.addColorStop(0, lighten(color, 70));
+  grad.addColorStop(0.45, color);
+  grad.addColorStop(1, darken(color, 50));
+ 
   context.beginPath();
   context.arc(x, y, radius, 0, Math.PI*2);
   context.fillStyle = grad;
   context.fill();
-
-  // ハイライト
+ 
+  // 輪郭線（漫画風の太い黒縁）
   context.beginPath();
-  context.arc(x-radius*0.28, y-radius*0.28, radius*0.28, 0, Math.PI*2);
-  context.fillStyle = 'rgba(255,255,255,0.45)';
+  context.arc(x, y, radius, 0, Math.PI*2);
+  context.strokeStyle = 'rgba(0,0,0,0.55)';
+  context.lineWidth = radius * 0.1;
+  context.stroke();
+ 
+  // ハイライト（大きめ楕円）
+  context.save();
+  context.beginPath();
+  context.ellipse(x - radius*0.22, y - radius*0.28, radius*0.32, radius*0.2, -0.4, 0, Math.PI*2);
+  context.fillStyle = 'rgba(255,255,255,0.55)';
   context.fill();
-
+  context.restore();
+ 
+  // ===== キャラクター顔 =====
+  context.shadowBlur = 0;
+  const s = radius;
+ 
+  if (face === 'dying') {
+    drawFaceDying(context, x, y, s, colorIdx);
+  } else {
+    drawFaceNormal(context, x, y, s, colorIdx);
+  }
+ 
   context.restore();
 }
-
+ 
+// ========== 漫画風パーツ描画ユーティリティ ==========
+ 
+// 漫画風の太い目（白目＋黒目＋光）
+function comicEye(ctx2, ex, ey, rOuter, rInner, pupilColor) {
+  // 白目
+  ctx2.beginPath();
+  ctx2.arc(ex, ey, rOuter, 0, Math.PI*2);
+  ctx2.fillStyle = 'white';
+  ctx2.fill();
+  ctx2.strokeStyle = '#111';
+  ctx2.lineWidth = rOuter * 0.18;
+  ctx2.stroke();
+  // 黒目
+  ctx2.beginPath();
+  ctx2.arc(ex + rOuter*0.1, ey + rOuter*0.1, rInner, 0, Math.PI*2);
+  ctx2.fillStyle = pupilColor || '#111';
+  ctx2.fill();
+  // キラキラ大
+  ctx2.beginPath();
+  ctx2.arc(ex - rOuter*0.15, ey - rOuter*0.18, rOuter*0.28, 0, Math.PI*2);
+  ctx2.fillStyle = 'white';
+  ctx2.fill();
+  // キラキラ小
+  ctx2.beginPath();
+  ctx2.arc(ex + rOuter*0.22, ey - rOuter*0.05, rOuter*0.12, 0, Math.PI*2);
+  ctx2.fillStyle = 'white';
+  ctx2.fill();
+}
+ 
+// ハート目
+function heartEye(ctx2, ex, ey, r) {
+  ctx2.save();
+  ctx2.fillStyle = '#FF4466';
+  ctx2.strokeStyle = '#aa0022';
+  ctx2.lineWidth = r * 0.15;
+  const size = r * 1.1;
+  ctx2.beginPath();
+  ctx2.moveTo(ex, ey + size*0.5);
+  ctx2.bezierCurveTo(ex - size, ey - size*0.2, ex - size*1.2, ey - size*1.0, ex, ey - size*0.2);
+  ctx2.bezierCurveTo(ex + size*1.2, ey - size*1.0, ex + size, ey - size*0.2, ex, ey + size*0.5);
+  ctx2.closePath();
+  ctx2.fill();
+  ctx2.stroke();
+  // ハートのキラキラ
+  ctx2.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx2.beginPath();
+  ctx2.ellipse(ex - size*0.3, ey - size*0.3, size*0.22, size*0.14, -0.5, 0, Math.PI*2);
+  ctx2.fill();
+  ctx2.restore();
+}
+ 
+// 三角形の口（叫び）
+function shoutMouth(ctx2, x, my, w, h) {
+  ctx2.beginPath();
+  ctx2.ellipse(x, my, w, h, 0, 0, Math.PI*2);
+  ctx2.fillStyle = '#222';
+  ctx2.fill();
+  ctx2.strokeStyle = '#111';
+  ctx2.lineWidth = w*0.1;
+  ctx2.stroke();
+  // 歯
+  ctx2.fillStyle = 'white';
+  ctx2.fillRect(x - w*0.5, my - h*0.15, w*1.0, h*0.4);
+}
+ 
+// にっこり口（漫画風・歯あり）
+function bigSmile(ctx2, x, my, w) {
+  // 口の外形
+  ctx2.beginPath();
+  ctx2.moveTo(x - w, my);
+  ctx2.quadraticCurveTo(x, my + w*0.7, x + w, my);
+  ctx2.lineTo(x + w, my - w*0.05);
+  ctx2.quadraticCurveTo(x, my + w*0.4, x - w, my - w*0.05);
+  ctx2.closePath();
+  ctx2.fillStyle = '#222';
+  ctx2.fill();
+  // 歯
+  ctx2.save();
+  ctx2.clip();
+  ctx2.fillStyle = 'white';
+  ctx2.fillRect(x - w, my - w*0.05, w*2, w*0.38);
+  ctx2.restore();
+  // 口角
+  ctx2.strokeStyle = '#111';
+  ctx2.lineWidth = w*0.13;
+  ctx2.lineCap = 'round';
+  ctx2.beginPath();
+  ctx2.moveTo(x - w, my);
+  ctx2.quadraticCurveTo(x, my + w*0.7, x + w, my);
+  ctx2.stroke();
+}
+ 
+// への字口
+function sadMouth(ctx2, x, my, w) {
+  ctx2.beginPath();
+  ctx2.moveTo(x - w, my + w*0.3);
+  ctx2.quadraticCurveTo(x, my - w*0.2, x + w, my + w*0.3);
+  ctx2.strokeStyle = '#222';
+  ctx2.lineWidth = w * 0.22;
+  ctx2.lineCap = 'round';
+  ctx2.stroke();
+}
+ 
+// 漫画風眉毛
+function comicBrow(ctx2, ex, ey, w, angle, col) {
+  ctx2.save();
+  ctx2.translate(ex, ey);
+  ctx2.rotate(angle);
+  ctx2.beginPath();
+  ctx2.moveTo(-w*0.6, 0);
+  ctx2.quadraticCurveTo(0, -w*0.25, w*0.6, 0);
+  ctx2.strokeStyle = col || '#222';
+  ctx2.lineWidth = w * 0.28;
+  ctx2.lineCap = 'round';
+  ctx2.stroke();
+  ctx2.restore();
+}
+ 
+// ほっぺ（漫画風・斜線3本）
+function comicCheek(ctx2, cx, cy, s, col) {
+  ctx2.save();
+  ctx2.globalAlpha *= 0.7;
+  // 楕円ベース
+  ctx2.beginPath();
+  ctx2.ellipse(cx, cy, s*0.19, s*0.12, 0, 0, Math.PI*2);
+  ctx2.fillStyle = col;
+  ctx2.fill();
+  // 斜線
+  ctx2.strokeStyle = 'rgba(255,255,255,0.5)';
+  ctx2.lineWidth = s*0.025;
+  ctx2.lineCap = 'round';
+  for (let i=-1;i<=1;i++) {
+    ctx2.beginPath();
+    ctx2.moveTo(cx + i*s*0.065 - s*0.06, cy - s*0.04);
+    ctx2.lineTo(cx + i*s*0.065 + s*0.06, cy + s*0.04);
+    ctx2.stroke();
+  }
+  ctx2.restore();
+}
+ 
+// 汗マーク（漫画風）
+function comicSweat(ctx2, sx, sy, s) {
+  ctx2.save();
+  // 青い水滴
+  ctx2.fillStyle = '#55CCFF';
+  ctx2.strokeStyle = '#1188BB';
+  ctx2.lineWidth = s*0.05;
+  ctx2.beginPath();
+  ctx2.arc(sx, sy + s*0.12, s*0.1, 0, Math.PI*2);
+  ctx2.fill(); ctx2.stroke();
+  ctx2.beginPath();
+  ctx2.moveTo(sx - s*0.07, sy + s*0.12);
+  ctx2.quadraticCurveTo(sx - s*0.02, sy - s*0.06, sx + s*0.04, sy);
+  ctx2.quadraticCurveTo(sx + s*0.1, sy + s*0.06, sx + s*0.07, sy + s*0.12);
+  ctx2.fillStyle = '#55CCFF';
+  ctx2.fill(); ctx2.stroke();
+  ctx2.restore();
+}
+ 
+// ======== 色ごとの通常顔（漫画風） ========
+function drawFaceNormal(ctx2, x, y, s, idx) {
+  ctx2.save();
+  ctx2.shadowBlur = 0;
+ 
+  const eY  = y - s*0.1;
+  const eSpread = s*0.27;
+  const eR  = s*0.155;
+ 
+  if (idx === 0) {
+    // 🔴 赤：元気・ドヤ顔。大きな白目、太い眉、大きな笑顔
+    comicBrow(ctx2, x - eSpread, eY - s*0.28, eR, -0.15, '#222');
+    comicBrow(ctx2, x + eSpread, eY - s*0.28, eR,  0.15, '#222');
+    comicEye(ctx2, x - eSpread, eY, eR, eR*0.55, '#111');
+    comicEye(ctx2, x + eSpread, eY, eR, eR*0.55, '#111');
+    bigSmile(ctx2, x, y + s*0.17, s*0.32);
+    comicCheek(ctx2, x - s*0.42, y + s*0.08, s, '#FF7799');
+    comicCheek(ctx2, x + s*0.42, y + s*0.08, s, '#FF7799');
+ 
+  } else if (idx === 1) {
+    // 🔵 青：おっとり・たれ目。目が下がり気味、ゆる笑顔
+    // たれ目（白目+黒目、上がclip）
+    for (const ex of [x - eSpread, x + eSpread]) {
+      // 白目（少し縦長だれ目型）
+      ctx2.save();
+      ctx2.beginPath();
+      ctx2.ellipse(ex, eY + eR*0.15, eR, eR*0.78, 0, 0, Math.PI*2);
+      ctx2.fillStyle = 'white';
+      ctx2.fill();
+      ctx2.strokeStyle = '#111';
+      ctx2.lineWidth = eR*0.18;
+      ctx2.stroke();
+      // 黒目
+      ctx2.beginPath();
+      ctx2.arc(ex + eR*0.08, eY + eR*0.3, eR*0.42, 0, Math.PI*2);
+      ctx2.fillStyle = '#2244AA';
+      ctx2.fill();
+      // キラキラ
+      ctx2.beginPath();
+      ctx2.arc(ex - eR*0.12, eY + eR*0.1, eR*0.22, 0, Math.PI*2);
+      ctx2.fillStyle = 'white'; ctx2.fill();
+      // たれ眉
+      ctx2.beginPath();
+      ctx2.moveTo(ex - eR*0.7, eY - eR*0.85);
+      ctx2.quadraticCurveTo(ex, eY - eR*1.05, ex + eR*0.7, eY - eR*0.72);
+      ctx2.strokeStyle = '#333'; ctx2.lineWidth = eR*0.25; ctx2.lineCap='round';
+      ctx2.stroke();
+      ctx2.restore();
+    }
+    // ゆる口
+    ctx2.beginPath();
+    ctx2.moveTo(x - s*0.22, y + s*0.22);
+    ctx2.quadraticCurveTo(x, y + s*0.34, x + s*0.22, y + s*0.22);
+    ctx2.strokeStyle = '#222'; ctx2.lineWidth = s*0.07; ctx2.lineCap='round';
+    ctx2.stroke();
+    comicCheek(ctx2, x - s*0.44, y + s*0.12, s, '#88AAFF');
+    comicCheek(ctx2, x + s*0.44, y + s*0.12, s, '#88AAFF');
+ 
+  } else if (idx === 2) {
+    // 🟢 緑：満面の笑み。目が細いへの字＋大笑い
+    // への字目（U字反転）
+    for (const ex of [x - eSpread, x + eSpread]) {
+      ctx2.beginPath();
+      ctx2.arc(ex, eY + eR*0.5, eR*0.72, Math.PI, 0);
+      ctx2.strokeStyle = '#111';
+      ctx2.lineWidth = eR*0.38;
+      ctx2.lineCap = 'round';
+      ctx2.stroke();
+      // まつ毛
+      ctx2.beginPath();
+      ctx2.moveTo(ex - eR*0.65, eY + eR*0.5);
+      ctx2.lineTo(ex - eR*1.0, eY + eR*0.1);
+      ctx2.moveTo(ex + eR*0.65, eY + eR*0.5);
+      ctx2.lineTo(ex + eR*1.0, eY + eR*0.1);
+      ctx2.strokeStyle = '#111'; ctx2.lineWidth = eR*0.2;
+      ctx2.stroke();
+    }
+    bigSmile(ctx2, x, y + s*0.15, s*0.35);
+    comicCheek(ctx2, x - s*0.44, y + s*0.06, s, '#44DD88');
+    comicCheek(ctx2, x + s*0.44, y + s*0.06, s, '#44DD88');
+ 
+  } else if (idx === 3) {
+    // 🟡 黄：びっくり！目がまん丸で大きい、口が叫び
+    // ビックリ眉
+    comicBrow(ctx2, x - eSpread, eY - s*0.32, eR*1.1, 0.35, '#222');
+    comicBrow(ctx2, x + eSpread, eY - s*0.32, eR*1.1, -0.35, '#222');
+    // 大きな白目
+    comicEye(ctx2, x - eSpread, eY, eR*1.28, eR*0.68, '#222');
+    comicEye(ctx2, x + eSpread, eY, eR*1.28, eR*0.68, '#222');
+    // 叫び口
+    shoutMouth(ctx2, x, y + s*0.24, s*0.2, s*0.14);
+ 
+  } else {
+    // 🟣 紫：眠そう・うとうと。半眼＋ハート
+    // 半眼（上半分だけ目）
+    for (const ex of [x - eSpread, x + eSpread]) {
+      ctx2.save();
+      ctx2.beginPath();
+      ctx2.ellipse(ex, eY, eR, eR*0.8, 0, 0, Math.PI*2);
+      ctx2.clip();
+      // 下半分だけ白目
+      ctx2.fillStyle = 'white';
+      ctx2.fillRect(ex - eR*1.5, eY, eR*3, eR*2);
+      ctx2.strokeStyle = '#111'; ctx2.lineWidth = eR*0.15;
+      // まぶた線
+      ctx2.beginPath();
+      ctx2.moveTo(ex - eR, eY);
+      ctx2.lineTo(ex + eR, eY);
+      ctx2.stroke();
+      // 黒目（下よりに）
+      ctx2.beginPath();
+      ctx2.arc(ex, eY + eR*0.35, eR*0.38, 0, Math.PI*2);
+      ctx2.fillStyle = '#330055'; ctx2.fill();
+      // キラキラ
+      ctx2.beginPath();
+      ctx2.arc(ex - eR*0.15, eY + eR*0.18, eR*0.14, 0, Math.PI*2);
+      ctx2.fillStyle = 'white'; ctx2.fill();
+      ctx2.restore();
+      // まぶた輪郭
+      ctx2.beginPath();
+      ctx2.ellipse(ex, eY, eR, eR*0.8, 0, 0, Math.PI*2);
+      ctx2.strokeStyle = '#222'; ctx2.lineWidth = eR*0.18;
+      ctx2.stroke();
+    }
+    // ハート口
+    heartEye(ctx2, x, y + s*0.28, s*0.12);
+    comicCheek(ctx2, x - s*0.44, y + s*0.1, s, '#CC66FF');
+    comicCheek(ctx2, x + s*0.44, y + s*0.1, s, '#CC66FF');
+  }
+ 
+  ctx2.restore();
+}
+ 
+// ======== 消えるとき：漫画風パニック顔 ========
+function drawFaceDying(ctx2, x, y, s, idx) {
+  ctx2.save();
+  ctx2.shadowBlur = 0;
+ 
+  const eY = y - s*0.1;
+  const eSpread = s*0.27;
+  const eR = s*0.155;
+ 
+  // ガクガク眉（困り）
+  const browAngle = 0.45;
+  comicBrow(ctx2, x - eSpread, eY - s*0.28, eR, browAngle, '#333');
+  comicBrow(ctx2, x + eSpread, eY - s*0.28, eR, -browAngle, '#333');
+ 
+  // ×目（漫画風・太くくっきり）
+  for (const ex of [x - eSpread, x + eSpread]) {
+    // 白目の輪
+    ctx2.beginPath();
+    ctx2.arc(ex, eY, eR, 0, Math.PI*2);
+    ctx2.fillStyle = 'white';
+    ctx2.fill();
+    ctx2.strokeStyle = '#111';
+    ctx2.lineWidth = eR*0.18;
+    ctx2.stroke();
+    // ×線
+    const er = eR * 0.62;
+    ctx2.strokeStyle = '#CC0000';
+    ctx2.lineWidth = eR * 0.32;
+    ctx2.lineCap = 'round';
+    ctx2.beginPath(); ctx2.moveTo(ex-er, eY-er); ctx2.lineTo(ex+er, eY+er); ctx2.stroke();
+    ctx2.beginPath(); ctx2.moveTo(ex+er, eY-er); ctx2.lineTo(ex-er, eY+er); ctx2.stroke();
+  }
+ 
+  // 波線口（ガタガタ震え）
+  ctx2.beginPath();
+  ctx2.moveTo(x - s*0.28, y + s*0.26);
+  for (let i=0;i<5;i++) {
+    const px = x - s*0.28 + i*(s*0.56/4);
+    const py = y + s*0.26 + (i%2===0 ? s*0.06 : -s*0.06);
+    ctx2.lineTo(px + s*0.07, py);
+  }
+  ctx2.lineTo(x + s*0.28, y + s*0.26);
+  ctx2.strokeStyle = '#222';
+  ctx2.lineWidth = s*0.09;
+  ctx2.lineCap = 'round';
+  ctx2.lineJoin = 'round';
+  ctx2.stroke();
+ 
+  // 汗×2
+  comicSweat(ctx2, x + s*0.58, eY - s*0.1, s);
+  comicSweat(ctx2, x - s*0.62, eY + s*0.05, s*0.8);
+ 
+  ctx2.restore();
+}
+ 
+function drawEyes(ctx2, x, ey, spread, r, col, shine) {
+  for (const ex of [x-spread, x+spread]) {
+    ctx2.beginPath();
+    ctx2.arc(ex, ey, r, 0, Math.PI*2);
+    ctx2.fillStyle = col;
+    ctx2.fill();
+    if (shine) {
+      ctx2.beginPath();
+      ctx2.arc(ex+r*0.3, ey-r*0.3, r*0.32, 0, Math.PI*2);
+      ctx2.fillStyle = 'white';
+      ctx2.fill();
+    }
+  }
+}
+ 
+function drawEyesHalf(ctx2, x, ey, spread, r, col) {
+  for (const ex of [x-spread, x+spread]) {
+    ctx2.fillStyle = col;
+    ctx2.beginPath();
+    ctx2.arc(ex, ey, r, Math.PI, 0);
+    ctx2.fill();
+    ctx2.fillStyle = 'white';
+    ctx2.beginPath();
+    ctx2.arc(ex, ey+r*0.1, r*0.85, Math.PI, 0);
+    ctx2.fill();
+  }
+}
+ 
+function drawEyesCrescent(ctx2, x, ey, spread, r) {
+  for (const ex of [x-spread, x+spread]) {
+    ctx2.fillStyle = '#333';
+    ctx2.beginPath();
+    ctx2.arc(ex, ey, r, Math.PI, 0);
+    ctx2.fill();
+  }
+}
+ 
+function drawEyesSleepy(ctx2, x, ey, spread, r) {
+  ctx2.strokeStyle = '#333';
+  ctx2.lineWidth = r*0.7;
+  ctx2.lineCap = 'round';
+  for (const ex of [x-spread, x+spread]) {
+    ctx2.beginPath();
+    ctx2.moveTo(ex-r*0.8, ey);
+    ctx2.lineTo(ex+r*0.8, ey);
+    ctx2.stroke();
+  }
+}
+ 
+function drawSmile(ctx2, x, my, w, sad) {
+  ctx2.beginPath();
+  if (sad) {
+    ctx2.moveTo(x-w, my);
+    ctx2.quadraticCurveTo(x, my-w*0.6, x+w, my);
+  } else {
+    ctx2.moveTo(x-w, my);
+    ctx2.quadraticCurveTo(x, my+w*0.6, x+w, my);
+  }
+  ctx2.strokeStyle = '#333';
+  ctx2.lineWidth = w*0.18;
+  ctx2.lineCap = 'round';
+  ctx2.stroke();
+}
+ 
+function drawSmileGentle(ctx2, x, my, w) {
+  ctx2.beginPath();
+  ctx2.moveTo(x-w, my);
+  ctx2.quadraticCurveTo(x, my+w*0.4, x+w, my);
+  ctx2.strokeStyle = '#333';
+  ctx2.lineWidth = w*0.18;
+  ctx2.lineCap = 'round';
+  ctx2.stroke();
+}
+ 
+function drawCheeks(ctx2, x, cy, s, col) {
+  ctx2.globalAlpha *= 0.45;
+  for (const cx of [x - s*0.38, x + s*0.38]) {
+    ctx2.beginPath();
+    ctx2.ellipse(cx, cy, s*0.16, s*0.1, 0, 0, Math.PI*2);
+    ctx2.fillStyle = col;
+    ctx2.fill();
+  }
+  ctx2.globalAlpha /= 0.45;
+}
+ 
 function lighten(hex, amt) {
   let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
   r=Math.min(255,r+amt); g=Math.min(255,g+amt); b=Math.min(255,b+amt);
@@ -675,11 +1615,11 @@ function darken(hex, amt) {
   r=Math.max(0,r-amt); g=Math.max(0,g-amt); b=Math.max(0,b-amt);
   return `rgb(${r},${g},${b})`;
 }
-
+ 
 function drawAll() {
   if (!game || !CELL) return;
   ctx.clearRect(0,0,canvas.width,canvas.height);
-
+ 
   // グリッド背景
   for (let r=0;r<ROWS;r++) {
     for (let c=0;c<COLS;c++) {
@@ -689,11 +1629,11 @@ function drawAll() {
       ctx.fill();
     }
   }
-
+ 
   // ボード
   const flashPhase = game.animFrames % 6 < 3;
   const clearSet = new Set(game.clearCells.map(([r,c])=>`${r},${c}`));
-
+ 
   for (let r=0;r<ROWS;r++) {
     for (let c=0;c<COLS;c++) {
       const color = game.board[r][c];
@@ -702,11 +1642,12 @@ function drawAll() {
         if (isClear && !flashPhase) continue;
         const scale = isClear ? 1.1 : 1;
         const alpha = isClear ? (flashPhase ? 1 : 0.4) : 1;
-        drawCell(ctx, c, r, COLORS[color-1], CELL, !isClear, alpha, scale);
+        const face = isClear ? 'dying' : 'normal';
+        drawCell(ctx, c, r, COLORS[color-1], CELL, !isClear, alpha, scale, color-1, face);
       }
     }
   }
-
+ 
   // 落下中のぷよ
   if (game.current && game.state==='falling') {
     const [r1,c1,r2,c2] = game.getPairPos();
@@ -715,35 +1656,33 @@ function drawAll() {
     while (game.canPlace(game.current.col, ghostRow+1, game.current.rot)) ghostRow++;
     const ghostDiff = ghostRow - game.current.row;
     const [gr1,gc1,gr2,gc2] = [r1+ghostDiff, c1, r2+ghostDiff, c2];
-    if (game.inBounds(gc1,gr1)) drawCell(ctx, gc1, gr1, COLORS[game.current.colors[0]-1], CELL, false, 0.2);
-    if (game.inBounds(gc2,gr2)) drawCell(ctx, gc2, gr2, COLORS[game.current.colors[1]-1], CELL, false, 0.2);
+    if (game.inBounds(gc1,gr1)) drawCell(ctx, gc1, gr1, COLORS[game.current.colors[0]-1], CELL, false, 0.2, 1, game.current.colors[0]-1, 'normal');
+    if (game.inBounds(gc2,gr2)) drawCell(ctx, gc2, gr2, COLORS[game.current.colors[1]-1], CELL, false, 0.2, 1, game.current.colors[1]-1, 'normal');
     // 実際のぷよ
-    if (game.inBounds(c1,r1)) drawCell(ctx, c1, r1, COLORS[game.current.colors[0]-1], CELL, true);
-    if (game.inBounds(c2,r2)) drawCell(ctx, c2, r2, COLORS[game.current.colors[1]-1], CELL, true);
+    if (game.inBounds(c1,r1)) drawCell(ctx, c1, r1, COLORS[game.current.colors[0]-1], CELL, true, 1, 1, game.current.colors[0]-1, 'normal');
+    if (game.inBounds(c2,r2)) drawCell(ctx, c2, r2, COLORS[game.current.colors[1]-1], CELL, true, 1, 1, game.current.colors[1]-1, 'normal');
   }
-
+ 
   drawNext();
 }
-
+ 
 function drawNext() {
   nctx.clearRect(0,0,nextCanvas.width,nextCanvas.height);
   if (!game || !game.next) return;
   const s = 52;
-  drawCell(nctx, 0, 0, COLORS[game.next[0]-1], s, true);
-  drawCell(nctx, 0, 1, COLORS[game.next[1]-1], s, true);
+  drawCell(nctx, 0, 0, COLORS[game.next[0]-1], s, true, 1, 1, game.next[0]-1, 'normal');
+  drawCell(nctx, 0, 1, COLORS[game.next[1]-1], s, true, 1, 1, game.next[1]-1, 'normal');
 }
-
+ 
 // ゲームループ
 let lastTick = 0;
 let paused = false;
-
+ 
 function gameLoop(ts) {
-  if (!game || game.state==='gameover') {
-    if (game && game.state==='gameover') endGame();
-    return;
-  }
+  if (!game) return;
+  if (game.state==='gameover') { endGame(); return; }
+  if (game.state==='stageclear') { showStageClear(); return; }
   if (paused) return;
-  // 60fps想定でtick
   if (ts - lastTick >= 16) {
     game.tick();
     drawAll();
@@ -751,32 +1690,72 @@ function gameLoop(ts) {
   }
   requestAnimationFrame(gameLoop);
 }
-
-function startGame() {
+ 
+function startGame(fromStage = 0) {
+  currentStageIdx = fromStage;
   document.getElementById('overlay').classList.add('hidden');
+  document.getElementById('stage-clear-overlay').classList.remove('visible');
   paused = false;
   document.getElementById('pauseBtn').textContent = '⏸ ポーズ';
   document.getElementById('pauseBtn').classList.remove('paused');
   document.getElementById('pause-overlay').classList.remove('visible');
-  game = new PuyoGame();
-  updateUI(0, 0, 1);
+  const stage = getStage();
+  applyStageTheme(stage);
+  game = new PuyoGame(stage);
+  updateUI(0, 0, stage.id);
   document.getElementById('hiVal').textContent = (localStorage.getItem('puyoHi')||'0');
+  lastTick = 0;
   requestAnimationFrame(gameLoop);
 }
-
+ 
+function showStageClear() {
+  const stage = getStage();
+  const isLast = currentStageIdx >= STAGES.length - 1;
+  const inner = document.getElementById('stage-clear-inner');
+ 
+  if (isLast) {
+    inner.innerHTML = `
+      <div class="all-clear-title">🎉 全ステージクリア！！ 🎉</div>
+      <div class="stage-next-info" style="margin-bottom:6px;">スコア: ${game.score.toLocaleString()}</div>
+      <div class="stage-next-theme" style="font-size:18px;color:#aaaacc;">全8ステージ制覇おめでとう！</div>
+      <button class="stage-next-btn" onclick="startGame(0)" style="background:linear-gradient(135deg,#FF4757,#C44DFF)">🔄 最初から</button>
+    `;
+  } else {
+    const next = STAGES[currentStageIdx + 1];
+    inner.innerHTML = `
+      <div class="stage-clear-title">✨ STAGE ${stage.id} クリア！</div>
+      <div class="stage-next-info">NEXT STAGE</div>
+      <div class="stage-next-theme">${next.emoji} ${next.name}</div>
+      <div style="font-size:13px;color:#8888cc;margin-bottom:18px;font-weight:700;">目標: ${next.goal}個 / 色数: ${next.colors}色</div>
+      <button class="stage-next-btn" id="nextStageBtn">▶ 次のステージへ</button>
+    `;
+    document.getElementById('nextStageBtn').addEventListener('click', ()=>startGame(currentStageIdx+1));
+    document.getElementById('nextStageBtn').addEventListener('touchstart', e=>{ e.preventDefault(); startGame(currentStageIdx+1); }, {passive:false});
+  }
+ 
+  // ハイスコア保存
+  const hi = parseInt(localStorage.getItem('puyoHi')||'0');
+  if (game.score > hi) localStorage.setItem('puyoHi', game.score);
+  document.getElementById('hiVal').textContent = Math.max(hi, game.score).toLocaleString();
+ 
+  document.getElementById('stage-clear-overlay').classList.add('visible');
+}
+ 
 function endGame() {
   const hi = parseInt(localStorage.getItem('puyoHi')||'0');
   const isNew = game.score >= hi && game.score > 0;
   if (isNew) localStorage.setItem('puyoHi', game.score);
-
+  const stage = getStage();
+ 
   document.getElementById('overlayTitle').textContent = 'ゲームオーバー';
   document.getElementById('overlayScore').textContent = `スコア: ${game.score.toLocaleString()}`;
   document.getElementById('overlayHi').textContent = isNew ? '🏆 新記録！' : `ハイスコア: ${Math.max(hi, game.score).toLocaleString()}`;
   document.getElementById('startBtn').textContent = '🔄 もう一度！';
+  document.getElementById('startBtn').onclick = ()=>startGame(currentStageIdx);
   document.getElementById('overlay').classList.remove('hidden');
   document.getElementById('hiVal').textContent = Math.max(hi, game.score).toLocaleString();
 }
-
+ 
 // ボタン操作
 function addBtn(id, fn) {
   const el = document.getElementById(id);
@@ -786,16 +1765,16 @@ function addBtn(id, fn) {
   el.addEventListener('mousedown', ()=>{ fn(); interval=setInterval(fn,100); });
   el.addEventListener('mouseup', ()=>clearInterval(interval));
 }
-
+ 
 addBtn('btnLeft',  ()=>game&&game.moveLeft());
 addBtn('btnRight', ()=>game&&game.moveRight());
 addBtn('btnDown',  ()=>game&&game.softDrop());
-
+ 
 document.getElementById('btnRotL').addEventListener('touchstart', e=>{ e.preventDefault(); game&&game.rotLeft(); }, {passive:false});
 document.getElementById('btnRotL').addEventListener('click', ()=>game&&game.rotLeft());
 document.getElementById('btnRotR').addEventListener('touchstart', e=>{ e.preventDefault(); game&&game.rotRight(); }, {passive:false});
 document.getElementById('btnRotR').addEventListener('click', ()=>game&&game.rotRight());
-
+ 
 // キーボード操作
 document.addEventListener('keydown', e=>{
   if (!game) return;
@@ -808,9 +1787,12 @@ document.addEventListener('keydown', e=>{
   if (e.key==='z'||e.key==='Z') game.rotLeft();
   if (e.key==='x'||e.key==='X') game.rotRight();
 });
-
-document.getElementById('startBtn').addEventListener('click', startGame);
-
+ 
+document.getElementById('startBtn').addEventListener('click', ()=>startGame(0));
+ 
+// 初期テーマ適用
+applyStageTheme(STAGES[0]);
+ 
 // ポーズ
 function togglePause() {
   if (!game || game.state==='gameover') return;
@@ -829,10 +1811,10 @@ function togglePause() {
     requestAnimationFrame(gameLoop);
   }
 }
-
+ 
 document.getElementById('pauseBtn').addEventListener('click', togglePause);
 document.getElementById('pauseBtn').addEventListener('touchstart', e=>{ e.preventDefault(); togglePause(); }, {passive:false});
-
+ 
 // スワイプ操作
 let touchStartX=0, touchStartY=0, touchHandled=false;
 canvas.addEventListener('touchstart', e=>{
@@ -840,7 +1822,7 @@ canvas.addEventListener('touchstart', e=>{
   touchStartY=e.touches[0].clientY;
   touchHandled=false;
 }, {passive:true});
-
+ 
 canvas.addEventListener('touchmove', e=>{
   if (touchHandled||!game) return;
   const dx=e.touches[0].clientX-touchStartX;
@@ -853,7 +1835,7 @@ canvas.addEventListener('touchmove', e=>{
     game.softDrop();
   }
 }, {passive:true});
-
+ 
 canvas.addEventListener('touchend', e=>{
   if (!touchHandled&&game) {
     const dx=e.changedTouches[0].clientX-touchStartX;
@@ -861,14 +1843,15 @@ canvas.addEventListener('touchend', e=>{
     if (Math.abs(dx)<10&&Math.abs(dy)<10) game.rotRight();
   }
 });
-
+ 
 // ハイスコア表示
 document.getElementById('hiVal').textContent = (localStorage.getItem('puyoHi')||'0');
 document.getElementById('overlayScore').textContent = '';
 document.getElementById('overlayHi').textContent = '';
-
+ 
 window.addEventListener('resize', resize);
 resize();
 </script>
 </body>
 </html>
+ 
