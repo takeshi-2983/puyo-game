@@ -29,8 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100dvh;
+    height: 100dvh;
     overflow: hidden;
     transition: background 0.8s ease;
   }
@@ -43,43 +42,44 @@
     transition: background 0.8s ease;
     pointer-events: none;
   }
-  #header, #main, #controls { position: relative; z-index: 1; }
+  #header, #stage-bar-wrap, #main, #controls { position: relative; z-index: 1; }
 
   #header {
     width: 100%;
-    max-width: 420px;
+    max-width: 480px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px 6px;
+    padding: 6px 12px 4px;
+    flex-shrink: 0;
   }
 
   .score-box {
     background: var(--panel);
-    border-radius: 14px;
-    padding: 6px 14px;
+    border-radius: 12px;
+    padding: 4px 10px;
     text-align: center;
     border: 1px solid var(--cell-border);
   }
 
   .score-label {
-    font-size: 10px;
+    font-size: 9px;
     color: #8888cc;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
   }
 
   .score-value {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 900;
     color: var(--yellow);
     text-shadow: 0 0 12px #FFD70088;
-    line-height: 1;
+    line-height: 1.1;
   }
 
   #title {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 900;
     background: linear-gradient(135deg, #FF4757, #C44DFF, #1E90FF);
     -webkit-background-clip: text;
@@ -87,50 +87,98 @@
     background-clip: text;
   }
 
+  /* ステージバー */
+  #stage-bar-wrap {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 12px 3px;
+    flex-shrink: 0;
+  }
+  #stage-bar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+  #stage-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #aaaaee;
+    letter-spacing: 0.5px;
+  }
+  #stage-goal-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #aaaaee;
+  }
+  #stage-bar-bg {
+    background: #1a1a40;
+    border-radius: 6px;
+    height: 8px;
+    border: 1px solid #2a2a60;
+    overflow: hidden;
+  }
+  #stage-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #2ED573, #FFD700);
+    transition: width 0.3s ease, background 0.5s;
+    width: 0%;
+  }
+
+  /* メインエリア：残り高さをすべて使う */
   #main {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: flex-start;
-    padding: 0 10px;
+    padding: 0 8px;
     width: 100%;
-    max-width: 420px;
+    max-width: 480px;
+    flex: 1;
+    min-height: 0;
   }
 
   #board-wrap {
     flex: 1;
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
   }
 
   canvas#gameCanvas {
     display: block;
     width: 100%;
-    border-radius: 12px;
+    height: 100%;
+    border-radius: 10px;
     border: 2px solid var(--cell-border);
-    box-shadow: 0 0 30px rgba(100,100,255,0.15);
+    box-shadow: 0 0 20px rgba(100,100,255,0.15);
   }
 
   #side-panel {
-    width: 72px;
+    width: 64px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding-top: 4px;
+    gap: 6px;
+    padding-top: 2px;
+    height: 100%;
   }
 
   .side-box {
     background: var(--panel);
-    border-radius: 12px;
+    border-radius: 10px;
     border: 1px solid var(--cell-border);
-    padding: 8px;
+    padding: 5px 4px;
     text-align: center;
   }
 
   .side-label {
-    font-size: 9px;
+    font-size: 8px;
     color: #8888cc;
     font-weight: 800;
     letter-spacing: 1px;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
     text-transform: uppercase;
   }
 
@@ -140,7 +188,7 @@
   }
 
   #level-val {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 900;
     color: #2ED573;
     text-shadow: 0 0 12px #2ED57388;
@@ -151,7 +199,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 900;
     color: #FFD700;
     text-shadow: 0 0 20px #FFD700, 0 0 40px #FF8C00;
@@ -161,24 +209,26 @@
     white-space: nowrap;
   }
 
+  /* コントロール */
   #controls {
     width: 100%;
-    max-width: 420px;
-    padding: 10px 14px 16px;
+    max-width: 480px;
+    padding: 4px 10px 8px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .btn {
     background: var(--panel);
     border: 2px solid var(--cell-border);
-    border-radius: 14px;
+    border-radius: 12px;
     color: white;
     font-family: 'Nunito', sans-serif;
     font-weight: 900;
-    font-size: 22px;
-    padding: 14px 0;
+    font-size: 20px;
+    padding: 10px 0;
     cursor: pointer;
     transition: all 0.1s;
     -webkit-tap-highlight-color: transparent;
@@ -326,46 +376,6 @@
     color: #8888cc;
     margin-top: 8px;
     font-weight: 700;
-  }
-
-  /* ===== ステージ進捗バー ===== */
-  #stage-bar-wrap {
-    width: 100%;
-    max-width: 420px;
-    padding: 2px 14px 4px;
-    position: relative;
-    z-index: 1;
-  }
-  #stage-bar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3px;
-  }
-  #stage-label {
-    font-size: 11px;
-    font-weight: 800;
-    color: #aaaaee;
-    letter-spacing: 1px;
-  }
-  #stage-goal-label {
-    font-size: 11px;
-    font-weight: 800;
-    color: #aaaaee;
-  }
-  #stage-bar-bg {
-    background: #1a1a40;
-    border-radius: 8px;
-    height: 10px;
-    border: 1px solid #2a2a60;
-    overflow: hidden;
-  }
-  #stage-bar-fill {
-    height: 100%;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #2ED573, #FFD700);
-    transition: width 0.3s ease, background 0.5s;
-    width: 0%;
   }
 
   /* ===== ステージクリアオーバーレイ ===== */
@@ -569,10 +579,16 @@ let nctx = nextCanvas.getContext('2d');
 let CELL = 0;
 
 function resize() {
-  const wrap = document.getElementById('board-wrap');
-  const w = wrap.clientWidth;
-  CELL = Math.floor(w / COLS);
-  canvas.width = COLS * CELL;
+  const boardWrap = document.getElementById('board-wrap');
+  const wrapW = boardWrap.clientWidth;
+  const wrapH = boardWrap.clientHeight;
+
+  // 幅と高さから収まるセルサイズを計算（小さい方を採用）
+  const cellByW = Math.floor(wrapW / COLS);
+  const cellByH = Math.floor(wrapH / ROWS);
+  CELL = Math.min(cellByW, cellByH);
+
+  canvas.width  = COLS * CELL;
   canvas.height = ROWS * CELL;
   if (game) drawAll();
 }
