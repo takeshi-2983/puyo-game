@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ぷよぷよ風ゲーム</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap');
+
+  :root {
+    --red: #FF4757;
+    --blue: #2ED573;
+    --green: #1E90FF;
+    --yellow: #FFD700;
+    --purple: #C44DFF;
+    --bg: #0D0D2B;
+    --panel: #16163A;
+    --cell: #1a1a3e;
+    --cell-border: #2a2a5e;
+    --text: #ffffff;
+    --shadow-glow: rgba(255,255,255,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; touch-action: manipulation; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100dvh;
+    overflow: hidden;
+    background-image: radial-gradient(ellipse at 20% 20%, #1a0a3e 0%, transparent 60%),
+                      radial-gradient(ellipse at 80% 80%, #0a1a3e 0%, transparent 60%);
+  }
+
+  #header {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px 6px;
+  }
+
+  .score-box {
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 6px 14px;
+    text-align: center;
+    border: 1px solid var(--cell-border);
+  }
+
+  .score-label {
+    font-size: 10px;
+    color: #8888cc;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .score-value {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--yellow);
+    text-shadow: 0 0 12px #FFD70088;
+    line-height: 1;
+  }
+
+  #title {
+    font-size: 20px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FF4757, #C44DFF, #1E90FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  #main {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  #board-wrap {
+    flex: 1;
+    position: relative;
+  }
+
+  canvas#gameCanvas {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid var(--cell-border);
+    box-shadow: 0 0 30px rgba(100,100,255,0.15);
+  }
+
+  #side-panel {
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 4px;
+  }
+
+  .side-box {
+    background: var(--panel);
+    border-radius: 12px;
+    border: 1px solid var(--cell-border);
+    padding: 8px;
+    text-align: center;
+  }
+
+  .side-label {
+    font-size: 9px;
+    color: #8888cc;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  canvas#nextCanvas {
+    display: block;
+    margin: 0 auto;
+  }
+
+  #level-val {
+    font-size: 26px;
+    font-weight: 900;
+    color: #2ED573;
+    text-shadow: 0 0 12px #2ED57388;
+  }
+
+  #chain-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 42px;
+    font-weight: 900;
+    color: #FFD700;
+    text-shadow: 0 0 20px #FFD700, 0 0 40px #FF8C00;
+    pointer-events: none;
+    transition: all 0.1s;
+    z-index: 10;
+    white-space: nowrap;
+  }
+
+  #controls {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+  }
+
+  .btn {
+    background: var(--panel);
+    border: 2px solid var(--cell-border);
+    border-radius: 14px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    padding: 14px 0;
+    cursor: pointer;
+    transition: all 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .btn:active {
+    background: #2a2a5e;
+    transform: scale(0.94);
+    border-color: #5555aa;
+  }
+
+  .btn-rotate {
+    font-size: 18px;
+    background: linear-gradient(135deg, #1a1a4e, #2a1a5e);
+    border-color: #6644aa;
+  }
+
+  .btn-drop {
+    font-size: 18px;
+    background: linear-gradient(135deg, #1a3a1a, #1a4a2a);
+    border-color: #44aa66;
+  }
+
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+  }
+
+  #overlay.hidden { display: none; }
+
+  .overlay-title {
+    font-size: 40px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FF4757, #FFD700, #2ED573);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+
+  .overlay-score {
+    font-size: 20px;
+    color: #ccccff;
+    margin-bottom: 6px;
+    font-weight: 800;
+  }
+
+  .overlay-hi {
+    font-size: 15px;
+    color: #FFD700;
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+
+  .start-btn {
+    background: linear-gradient(135deg, #FF4757, #C44DFF);
+    border: none;
+    border-radius: 18px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 16px 48px;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(196,77,255,0.5);
+    transition: all 0.15s;
+  }
+
+  .start-btn:active { transform: scale(0.96); }
+
+  .rules {
+    margin-top: 20px;
+    color: #8888cc;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.8;
+    font-weight: 700;
+  }
+
+  /* パーティクル */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  #pauseBtn {
+    background: var(--panel);
+    border: 2px solid var(--cell-border);
+    border-radius: 12px;
+    color: #aaaadd;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all 0.1s;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+  }
+
+  #pauseBtn:active { transform: scale(0.93); background: #2a2a5e; }
+  #pauseBtn.paused { color: #2ED573; border-color: #2ED573; text-shadow: 0 0 10px #2ED57388; }
+
+  #pause-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,40,0.82);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+    backdrop-filter: blur(3px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  #pause-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #pause-overlay .pause-text {
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(100,100,255,0.8);
+  }
+
+  #pause-overlay .pause-sub {
+    font-size: 13px;
+    color: #8888cc;
+    margin-top: 8px;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <div class="score-box">
+    <div class="score-label">スコア</div>
+    <div class="score-value" id="scoreVal">0</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:5px;">
+    <div id="title">ぷよポップ！</div>
+    <button id="pauseBtn">⏸ ポーズ</button>
+  </div>
+  <div class="score-box">
+    <div class="score-label">ハイスコア</div>
+    <div class="score-value" id="hiVal">0</div>
+  </div>
+</div>
+
+<div id="main">
+  <div id="board-wrap">
+    <canvas id="gameCanvas"></canvas>
+    <div id="chain-display"></div>
+    <div id="pause-overlay">
+      <div class="pause-text">⏸ PAUSE</div>
+      <div class="pause-sub">ポーズボタンで再開</div>
+    </div>
+  </div>
+  <div id="side-panel">
+    <div class="side-box">
+      <div class="side-label">NEXT</div>
+      <canvas id="nextCanvas" width="56" height="116"></canvas>
+    </div>
+    <div class="side-box">
+      <div class="side-label">LEVEL</div>
+      <div id="level-val">1</div>
+    </div>
+    <div class="side-box">
+      <div class="side-label">消し</div>
+      <div id="clear-val" style="font-size:20px;font-weight:900;color:#FF4757;text-shadow:0 0 12px #FF475788;">0</div>
+    </div>
+  </div>
+</div>
+
+<div id="controls">
+  <button class="btn" id="btnLeft">◀</button>
+  <button class="btn btn-rotate" id="btnRotL">↺</button>
+  <button class="btn btn-drop" id="btnDown">▼▼</button>
+  <button class="btn btn-rotate" id="btnRotR">↻</button>
+  <button class="btn" id="btnRight">▶</button>
+</div>
+
+<div id="overlay">
+  <div class="overlay-title" id="overlayTitle">ぷよポップ！</div>
+  <div class="overlay-score" id="overlayScore"></div>
+  <div class="overlay-hi" id="overlayHi"></div>
+  <button class="start-btn" id="startBtn">🎮 スタート！</button>
+  <div class="rules">
+    同じ色のぷよを4つ以上つなげて消そう！<br>
+    連鎖ボーナスで高得点を狙え！
+  </div>
+</div>
+
+<script>
+const COLS = 6, ROWS = 13;
+const COLORS = ['#FF4757','#1E90FF','#2ED573','#FFD700','#C44DFF'];
+const COLOR_GLOW = ['#FF4757','#1E90FF','#2ED573','#FFD700','#C44DFF'];
+const COLOR_NAMES = ['赤','青','緑','黄','紫'];
+
+let canvas = document.getElementById('gameCanvas');
+let ctx = canvas.getContext('2d');
+let nextCanvas = document.getElementById('nextCanvas');
+let nctx = nextCanvas.getContext('2d');
+
+// セルサイズをキャンバスに合わせて計算
+let CELL = 0;
+
+function resize() {
+  const wrap = document.getElementById('board-wrap');
+  const w = wrap.clientWidth;
+  CELL = Math.floor(w / COLS);
+  canvas.width = COLS * CELL;
+  canvas.height = ROWS * CELL;
+  if (game) drawAll();
+}
+
+// ゲーム状態
+let game = null;
+
+class PuyoGame {
+  constructor() {
+    this.board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+    this.score = 0;
+    this.cleared = 0;
+    this.level = 1;
+    this.fallTimer = 0;
+    this.fallSpeed = 48; // フレーム数
+    this.current = null;
+    this.next = null;
+    this.state = 'falling'; // falling | clearing | gameover
+    this.chainCount = 0;
+    this.animFrames = 0;
+    this.clearCells = [];
+    this.lastTime = 0;
+    this.raf = null;
+    this.genNext();
+    this.spawnCurrent();
+  }
+
+  randColor() {
+    // レベルに応じて色数を増やす
+    const numColors = Math.min(2 + this.level, 5);
+    return Math.floor(Math.random() * numColors) + 1;
+  }
+
+  genNext() {
+    this.next = [this.randColor(), this.randColor()];
+  }
+
+  spawnCurrent() {
+    this.current = {
+      colors: this.next,
+      col: Math.floor(COLS / 2) - 1,
+      row: 0,
+      rot: 0 // 0=上下, 1=左右(上が左), 2=下上, 3=右左
+    };
+    this.genNext();
+    // スポーン時に重なっていたらゲームオーバー
+    const [r1, c1, r2, c2] = this.getPairPos();
+    if ((this.board[r1] && this.board[r1][c1]) || (this.board[r2] && this.board[r2][c2])) {
+      this.state = 'gameover';
+    }
+  }
+
+  getPairPos() {
+    const {col, row, rot} = this.current;
+    let r1=row, c1=col, r2, c2;
+    if (rot===0)      { r2=row+1; c2=col; }
+    else if (rot===1) { r2=row; c2=col+1; }
+    else if (rot===2) { r2=row-1; c2=col; }
+    else              { r2=row; c2=col-1; }
+    return [r1,c1,r2,c2];
+  }
+
+  canPlace(col, row, rot) {
+    let c2, r2;
+    if (rot===0)      { r2=row+1; c2=col; }
+    else if (rot===1) { r2=row; c2=col+1; }
+    else if (rot===2) { r2=row-1; c2=col; }
+    else              { r2=row; c2=col-1; }
+    return this.inBounds(col,row) && this.inBounds(c2,r2) &&
+           !this.board[row][col] && !this.board[r2][c2];
+  }
+
+  inBounds(c, r) {
+    return c>=0 && c<COLS && r>=0 && r<ROWS;
+  }
+
+  moveLeft()  { if (this.state!=='falling') return; const {col,row,rot}=this.current; if (this.canPlace(col-1,row,rot)) this.current.col--; }
+  moveRight() { if (this.state!=='falling') return; const {col,row,rot}=this.current; if (this.canPlace(col+1,row,rot)) this.current.col++; }
+
+  rotLeft() {
+    if (this.state!=='falling') return;
+    const {col,row,rot}=this.current;
+    const nr = (rot+3)%4;
+    if (this.canPlace(col,row,nr)) { this.current.rot=nr; return; }
+    // kick
+    for (const dc of [-1,1]) {
+      if (this.canPlace(col+dc,row,nr)) { this.current.col+=dc; this.current.rot=nr; return; }
+    }
+  }
+
+  rotRight() {
+    if (this.state!=='falling') return;
+    const {col,row,rot}=this.current;
+    const nr = (rot+1)%4;
+    if (this.canPlace(col,row,nr)) { this.current.rot=nr; return; }
+    for (const dc of [1,-1]) {
+      if (this.canPlace(col+dc,row,nr)) { this.current.col+=dc; this.current.rot=nr; return; }
+    }
+  }
+
+  softDrop() {
+    if (this.state!=='falling') return;
+    this.fall();
+    this.score += 1;
+  }
+
+  fall() {
+    const {col,row,rot}=this.current;
+    if (this.canPlace(col,row+1,rot)) {
+      this.current.row++;
+    } else {
+      this.lock();
+    }
+  }
+
+  lock() {
+    const [r1,c1,r2,c2] = this.getPairPos();
+    if (this.inBounds(c1,r1)) this.board[r1][c1] = this.current.colors[0];
+    if (this.inBounds(c2,r2)) this.board[r2][c2] = this.current.colors[1];
+    this.applyGravity();
+    this.chainCount = 0;
+    this.checkClear();
+  }
+
+  applyGravity() {
+    for (let c=0;c<COLS;c++) {
+      let bottom = ROWS-1;
+      for (let r=ROWS-1;r>=0;r--) {
+        if (this.board[r][c]) {
+          this.board[bottom][c] = this.board[r][c];
+          if (bottom!==r) this.board[r][c]=0;
+          bottom--;
+        }
+      }
+    }
+  }
+
+  checkClear() {
+    const visited = Array.from({length:ROWS},()=>Array(COLS).fill(false));
+    const toDelete = [];
+
+    for (let r=0;r<ROWS;r++) {
+      for (let c=0;c<COLS;c++) {
+        const color = this.board[r][c];
+        if (!color || visited[r][c]) continue;
+        // BFS
+        const group = [];
+        const queue = [[r,c]];
+        visited[r][c] = true;
+        while (queue.length) {
+          const [cr,cc] = queue.shift();
+          group.push([cr,cc]);
+          for (const [dr,dc] of [[-1,0],[1,0],[0,-1],[0,1]]) {
+            const nr=cr+dr, nc=cc+dc;
+            if (nr>=0&&nr<ROWS&&nc>=0&&nc<COLS&&!visited[nr][nc]&&this.board[nr][nc]===color) {
+              visited[nr][nc]=true;
+              queue.push([nr,nc]);
+            }
+          }
+        }
+        if (group.length>=4) toDelete.push(...group);
+      }
+    }
+
+    if (toDelete.length) {
+      this.chainCount++;
+      this.clearCells = toDelete;
+      this.state = 'clearing';
+      this.animFrames = 30;
+      const chainBonus = this.chainCount * this.chainCount;
+      const pts = toDelete.length * 10 * chainBonus;
+      this.score += pts;
+      this.cleared += toDelete.length;
+      showChain(this.chainCount);
+      updateUI(this.score, this.cleared, this.level);
+    } else {
+      this.state = 'falling';
+      this.spawnCurrent();
+      if (this.state !== 'gameover') {
+        // レベルアップ
+        this.level = 1 + Math.floor(this.cleared / 20);
+        this.fallSpeed = Math.max(6, 48 - this.level*4);
+      }
+    }
+  }
+
+  stepClear() {
+    this.animFrames--;
+    if (this.animFrames <= 0) {
+      for (const [r,c] of this.clearCells) this.board[r][c]=0;
+      this.clearCells=[];
+      this.applyGravity();
+      this.checkClear();
+    }
+  }
+
+  tick() {
+    if (this.state==='falling') {
+      this.fallTimer++;
+      if (this.fallTimer >= this.fallSpeed) {
+        this.fallTimer=0;
+        this.fall();
+      }
+    } else if (this.state==='clearing') {
+      this.stepClear();
+    }
+  }
+}
+
+// UI更新
+function updateUI(score, cleared, level) {
+  document.getElementById('scoreVal').textContent = score.toLocaleString();
+  document.getElementById('clear-val').textContent = cleared;
+  document.getElementById('level-val').textContent = level;
+  const hi = Math.max(score, parseInt(localStorage.getItem('puyoHi')||'0'));
+  localStorage.setItem('puyoHi', hi);
+  document.getElementById('hiVal').textContent = hi.toLocaleString();
+}
+
+let chainTimeout = null;
+function showChain(n) {
+  const el = document.getElementById('chain-display');
+  el.textContent = n===1 ? '消し！' : `${n}連鎖！！`;
+  el.style.transform = 'translate(-50%,-50%) scale(1.2)';
+  clearTimeout(chainTimeout);
+  chainTimeout = setTimeout(()=>{
+    el.style.transform='translate(-50%,-50%) scale(0)';
+  }, 600);
+}
+
+// 描画
+function drawCell(context, c, r, color, size, glow, alpha=1, scale=1) {
+  const x = c*size + size/2;
+  const y = r*size + size/2;
+  const radius = size*0.42*scale;
+
+  context.save();
+  context.globalAlpha = alpha;
+
+  // グロー
+  if (glow) {
+    context.shadowColor = color;
+    context.shadowBlur = 14;
+  }
+
+  // 本体
+  const grad = context.createRadialGradient(x-radius*0.3, y-radius*0.3, radius*0.1, x, y, radius);
+  grad.addColorStop(0, lighten(color, 60));
+  grad.addColorStop(0.5, color);
+  grad.addColorStop(1, darken(color, 40));
+
+  context.beginPath();
+  context.arc(x, y, radius, 0, Math.PI*2);
+  context.fillStyle = grad;
+  context.fill();
+
+  // ハイライト
+  context.beginPath();
+  context.arc(x-radius*0.28, y-radius*0.28, radius*0.28, 0, Math.PI*2);
+  context.fillStyle = 'rgba(255,255,255,0.45)';
+  context.fill();
+
+  context.restore();
+}
+
+function lighten(hex, amt) {
+  let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  r=Math.min(255,r+amt); g=Math.min(255,g+amt); b=Math.min(255,b+amt);
+  return `rgb(${r},${g},${b})`;
+}
+function darken(hex, amt) {
+  let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+  r=Math.max(0,r-amt); g=Math.max(0,g-amt); b=Math.max(0,b-amt);
+  return `rgb(${r},${g},${b})`;
+}
+
+function drawAll() {
+  if (!game || !CELL) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // グリッド背景
+  for (let r=0;r<ROWS;r++) {
+    for (let c=0;c<COLS;c++) {
+      ctx.fillStyle = (r+c)%2===0 ? '#12123080' : '#0e0e2880';
+      ctx.beginPath();
+      ctx.roundRect(c*CELL+1, r*CELL+1, CELL-2, CELL-2, 4);
+      ctx.fill();
+    }
+  }
+
+  // ボード
+  const flashPhase = game.animFrames % 6 < 3;
+  const clearSet = new Set(game.clearCells.map(([r,c])=>`${r},${c}`));
+
+  for (let r=0;r<ROWS;r++) {
+    for (let c=0;c<COLS;c++) {
+      const color = game.board[r][c];
+      if (color) {
+        const isClear = clearSet.has(`${r},${c}`);
+        if (isClear && !flashPhase) continue;
+        const scale = isClear ? 1.1 : 1;
+        const alpha = isClear ? (flashPhase ? 1 : 0.4) : 1;
+        drawCell(ctx, c, r, COLORS[color-1], CELL, !isClear, alpha, scale);
+      }
+    }
+  }
+
+  // 落下中のぷよ
+  if (game.current && game.state==='falling') {
+    const [r1,c1,r2,c2] = game.getPairPos();
+    // ゴーストを描く
+    let ghostRow = game.current.row;
+    while (game.canPlace(game.current.col, ghostRow+1, game.current.rot)) ghostRow++;
+    const ghostDiff = ghostRow - game.current.row;
+    const [gr1,gc1,gr2,gc2] = [r1+ghostDiff, c1, r2+ghostDiff, c2];
+    if (game.inBounds(gc1,gr1)) drawCell(ctx, gc1, gr1, COLORS[game.current.colors[0]-1], CELL, false, 0.2);
+    if (game.inBounds(gc2,gr2)) drawCell(ctx, gc2, gr2, COLORS[game.current.colors[1]-1], CELL, false, 0.2);
+    // 実際のぷよ
+    if (game.inBounds(c1,r1)) drawCell(ctx, c1, r1, COLORS[game.current.colors[0]-1], CELL, true);
+    if (game.inBounds(c2,r2)) drawCell(ctx, c2, r2, COLORS[game.current.colors[1]-1], CELL, true);
+  }
+
+  drawNext();
+}
+
+function drawNext() {
+  nctx.clearRect(0,0,nextCanvas.width,nextCanvas.height);
+  if (!game || !game.next) return;
+  const s = 52;
+  drawCell(nctx, 0, 0, COLORS[game.next[0]-1], s, true);
+  drawCell(nctx, 0, 1, COLORS[game.next[1]-1], s, true);
+}
+
+// ゲームループ
+let lastTick = 0;
+let paused = false;
+
+function gameLoop(ts) {
+  if (!game || game.state==='gameover') {
+    if (game && game.state==='gameover') endGame();
+    return;
+  }
+  if (paused) return;
+  // 60fps想定でtick
+  if (ts - lastTick >= 16) {
+    game.tick();
+    drawAll();
+    lastTick = ts;
+  }
+  requestAnimationFrame(gameLoop);
+}
+
+function startGame() {
+  document.getElementById('overlay').classList.add('hidden');
+  paused = false;
+  document.getElementById('pauseBtn').textContent = '⏸ ポーズ';
+  document.getElementById('pauseBtn').classList.remove('paused');
+  document.getElementById('pause-overlay').classList.remove('visible');
+  game = new PuyoGame();
+  updateUI(0, 0, 1);
+  document.getElementById('hiVal').textContent = (localStorage.getItem('puyoHi')||'0');
+  requestAnimationFrame(gameLoop);
+}
+
+function endGame() {
+  const hi = parseInt(localStorage.getItem('puyoHi')||'0');
+  const isNew = game.score >= hi && game.score > 0;
+  if (isNew) localStorage.setItem('puyoHi', game.score);
+
+  document.getElementById('overlayTitle').textContent = 'ゲームオーバー';
+  document.getElementById('overlayScore').textContent = `スコア: ${game.score.toLocaleString()}`;
+  document.getElementById('overlayHi').textContent = isNew ? '🏆 新記録！' : `ハイスコア: ${Math.max(hi, game.score).toLocaleString()}`;
+  document.getElementById('startBtn').textContent = '🔄 もう一度！';
+  document.getElementById('overlay').classList.remove('hidden');
+  document.getElementById('hiVal').textContent = Math.max(hi, game.score).toLocaleString();
+}
+
+// ボタン操作
+function addBtn(id, fn) {
+  const el = document.getElementById(id);
+  let interval = null;
+  el.addEventListener('touchstart', e=>{ e.preventDefault(); fn(); interval=setInterval(fn,100); }, {passive:false});
+  el.addEventListener('touchend', ()=>clearInterval(interval));
+  el.addEventListener('mousedown', ()=>{ fn(); interval=setInterval(fn,100); });
+  el.addEventListener('mouseup', ()=>clearInterval(interval));
+}
+
+addBtn('btnLeft',  ()=>game&&game.moveLeft());
+addBtn('btnRight', ()=>game&&game.moveRight());
+addBtn('btnDown',  ()=>game&&game.softDrop());
+
+document.getElementById('btnRotL').addEventListener('touchstart', e=>{ e.preventDefault(); game&&game.rotLeft(); }, {passive:false});
+document.getElementById('btnRotL').addEventListener('click', ()=>game&&game.rotLeft());
+document.getElementById('btnRotR').addEventListener('touchstart', e=>{ e.preventDefault(); game&&game.rotRight(); }, {passive:false});
+document.getElementById('btnRotR').addEventListener('click', ()=>game&&game.rotRight());
+
+// キーボード操作
+document.addEventListener('keydown', e=>{
+  if (!game) return;
+  if (e.key==='Escape'||e.key==='p'||e.key==='P') { togglePause(); return; }
+  if (paused) return;
+  if (e.key==='ArrowLeft')  { e.preventDefault(); game.moveLeft(); }
+  if (e.key==='ArrowRight') { e.preventDefault(); game.moveRight(); }
+  if (e.key==='ArrowDown')  { e.preventDefault(); game.softDrop(); }
+  if (e.key==='ArrowUp')    { e.preventDefault(); game.rotRight(); }
+  if (e.key==='z'||e.key==='Z') game.rotLeft();
+  if (e.key==='x'||e.key==='X') game.rotRight();
+});
+
+document.getElementById('startBtn').addEventListener('click', startGame);
+
+// ポーズ
+function togglePause() {
+  if (!game || game.state==='gameover') return;
+  paused = !paused;
+  const btn = document.getElementById('pauseBtn');
+  const po = document.getElementById('pause-overlay');
+  if (paused) {
+    btn.textContent = '▶ 再開';
+    btn.classList.add('paused');
+    po.classList.add('visible');
+  } else {
+    btn.textContent = '⏸ ポーズ';
+    btn.classList.remove('paused');
+    po.classList.remove('visible');
+    lastTick = 0;
+    requestAnimationFrame(gameLoop);
+  }
+}
+
+document.getElementById('pauseBtn').addEventListener('click', togglePause);
+document.getElementById('pauseBtn').addEventListener('touchstart', e=>{ e.preventDefault(); togglePause(); }, {passive:false});
+
+// スワイプ操作
+let touchStartX=0, touchStartY=0, touchHandled=false;
+canvas.addEventListener('touchstart', e=>{
+  touchStartX=e.touches[0].clientX;
+  touchStartY=e.touches[0].clientY;
+  touchHandled=false;
+}, {passive:true});
+
+canvas.addEventListener('touchmove', e=>{
+  if (touchHandled||!game) return;
+  const dx=e.touches[0].clientX-touchStartX;
+  const dy=e.touches[0].clientY-touchStartY;
+  if (Math.abs(dx)>18&&Math.abs(dx)>Math.abs(dy)) {
+    touchHandled=true;
+    dx>0?game.moveRight():game.moveLeft();
+  } else if (dy>24&&Math.abs(dy)>Math.abs(dx)) {
+    touchHandled=true;
+    game.softDrop();
+  }
+}, {passive:true});
+
+canvas.addEventListener('touchend', e=>{
+  if (!touchHandled&&game) {
+    const dx=e.changedTouches[0].clientX-touchStartX;
+    const dy=e.changedTouches[0].clientY-touchStartY;
+    if (Math.abs(dx)<10&&Math.abs(dy)<10) game.rotRight();
+  }
+});
+
+// ハイスコア表示
+document.getElementById('hiVal').textContent = (localStorage.getItem('puyoHi')||'0');
+document.getElementById('overlayScore').textContent = '';
+document.getElementById('overlayHi').textContent = '';
+
+window.addEventListener('resize', resize);
+resize();
+</script>
+</body>
+</html>
